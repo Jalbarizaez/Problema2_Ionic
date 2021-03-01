@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Centro de correos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-header>
+  <ion-title class="CustomBlackBackground ion-padding-top">Correos:</ion-title>
+</ion-header>
+
+<div *ngIf="pruebas; then thenBlock"></div>
+<ng-template #thenBlock>
+  
+  <ion-button (click)="onClick()" expand="block" fill="clear" shape="round">
+    Revisar seleccionados
+  </ion-button>
+
+  <!-- <ion-button routerLink='/email-creator' expand="block" fill="clear" shape="round">
+    email creator
+  </ion-button> -->
+
+</ng-template>
+
+<ion-content>
+
+  <ion-list>
+    <ion-item
+    *ngFor='let _correo of ListaCorreosFalsosPrueba'>
+
+      <ion-chip color="primary" mode="md" outline="true">
+
+        <ion-checkbox (ionChange)="UpdateList($event,_correo)"></ion-checkbox>
+
+        <ion-label class="ion-padding-start">{{_correo}}</ion-label>
+
+      </ion-chip>
+
+    </ion-item>
+  </ion-list>
+  
+  <ion-fab class="ion-padding" vertical="bottom" horizontal="end" slot="fixed">  
+
+    <ion-fab-button (click)="AddEmailAlertPrompt()">  
+      <ion-icon name="add"></ion-icon>  
+    </ion-fab-button>
+    
+    <ion-row style="height: 10px"></ion-row>
+    
+    <ion-fab-button (click)="GoToEmailCreator()">  
+      <ion-icon name="at-sharp"></ion-icon>  
+    </ion-fab-button>
+
+  </ion-fab>  
+
+</ion-content>

@@ -1,5 +1,7 @@
 {
   "name": "Correos",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

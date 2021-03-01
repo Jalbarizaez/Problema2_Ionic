@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref='/home' routerLink="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>EmailCreator</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<div *ngIf="pruebas; then thenBlock"></div>
+<ng-template #thenBlock>
+  
+  <ion-button (click)="Debug1()" expand="block" fill="clear" shape="round">
+    Revisar seleccionados
+  </ion-button>
+
+
+</ng-template>
+
+<ion-content class="ion-padding">
+
+<!-- 
+  <ion-title class="ion-padding-start">Tu Nombre:</ion-title>
+  
+  <ion-input  class="ion-padding-start"
+              name='InputName'
+              type='text'
+              placeholder="Charles Xavier Ejemplo"
+              [(ngModel)]="InName"></ion-input>
+  
+  <ion-title class="ion-padding-start">Tu correo:</ion-title>
+  
+  <ion-input  class="ion-padding-start"
+              name='InputEmail'
+              type='text'
+              placeholder="example@mail.net"
+              [(ngModel)]="InEmai"></ion-input>
+  
+  <ion-title class="ion-padding-start">Tu password:</ion-title>
+
+  <ion-input  class="ion-padding-start"
+              name='InputPassword'
+              type='password'
+              [(ngModel)]="InPass"></ion-input> -->
+  
+  <ion-title class="ion-padding-start">Destinatarios:</ion-title>
+  <ion-chip 
+  color="primary" mode="md" outline="true"
+  *ngFor='let Email of SelectedEmails.getAll()'>
+  <ion-label>{{Email}}</ion-label>
+</ion-chip>
+
+<ion-title class="ion-padding-start">Asunto:</ion-title>
+
+<ion-input  class="ion-padding-start"
+            name='InputAsunto'
+            type='text'
+            [(ngModel)]="InAsun"></ion-input>
+
+<ion-title class="ion-padding-start">Contenido:</ion-title>
+
+<ion-textarea name='InputContent'
+              placeholder="Redacta algo..."
+              autoGrow='false'
+              [(ngModel)]="InBody"></ion-textarea>
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button
+  (click)="SendEmail()">
+    <ion-icon name="paper-plane"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+</ion-content>
+
+
